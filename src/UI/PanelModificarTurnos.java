@@ -40,7 +40,6 @@ public class PanelModificarTurnos extends JPanel {
 
 				panelManager.mostrarPanelTurnos();
 
-
 			}
 		});
 	}

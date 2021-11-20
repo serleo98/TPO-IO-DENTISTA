@@ -1,13 +1,17 @@
 package UI;
 
 
+import DAO.Odontologo.OdontologoService;
 import DAO.Turno.TurnoService;
+import Negocio.Odontologo;
 import Negocio.Turno;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class PanelCancelarTurno extends JPanel{
@@ -49,6 +53,24 @@ public class PanelCancelarTurno extends JPanel{
 				int resultado3 = JOptionPane.showConfirmDialog(jp,
 					"Esta seguro que quiere cancelar el turno del dia: x"+" a las x horas con el medico x", "Cancelar turno",
 					JOptionPane.OK_CANCEL_OPTION);
+
+				TurnoService ts= new TurnoService();
+				try{
+					BufferedReader leer = new BufferedReader(new FileReader("Cache.txt"));
+
+					//System.out.println(linea);
+
+					String[] parts = leer.readLine().split(";");
+					String indetificador = (String) turnos.getSelectedItem();
+
+					String[] indetificadores= indetificador.split(" | ");
+
+					ts.eliminarTU(Long.parseLong(indetificadores[0]));
+
+				}
+				catch(Exception e){
+					System.out.println(e.getMessage());
+				}
 						if(resultado3 == JOptionPane.OK_OPTION) {
 							//eliminar turno de la base de datos
 							JOptionPane.showMessageDialog(jp, "El turno fue cancelado",

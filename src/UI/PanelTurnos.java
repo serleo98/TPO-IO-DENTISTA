@@ -108,7 +108,7 @@ public class PanelTurnos extends JPanel{
 			
 			public void actionPerformed(ActionEvent l) {
 
-				reservar.setVisible(true);
+				modificar.setVisible(true);
 
 			}
 		});
@@ -166,6 +166,10 @@ public class PanelTurnos extends JPanel{
 				" aca agregar fecha del turno a modificar \n"+ " por el turno dia: " + fechaJC.getSelectedItem() + " a las " 
 				+ horaJC.getSelectedItem() + " con el odntologo " + medicoJC.getSelectedItem(), 
 				"Confirmar turno", JOptionPane.OK_CANCEL_OPTION);
+
+
+
+
 				if(resultado3 == JOptionPane.OK_OPTION) {
 					//aca es donde guardo los datos en base de datos
 					fechaL.setVisible(false);
