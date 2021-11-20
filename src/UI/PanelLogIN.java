@@ -35,7 +35,7 @@ public class PanelLogIN extends JPanel {
     	
         //frame = new JFrame("Login");
         //panel = new JPanel();
-        jcb = new JCheckBox("Mostrar contaseña");
+        jcb = new JCheckBox("Mostrar contaseï¿½a");
         
         this.panelManager = panelManager;
 
@@ -123,49 +123,43 @@ public class PanelLogIN extends JPanel {
     	ArrayList <Paciente> listaP = ps.listarPA();
     	int i = 1;
     	for(Paciente paciente : listaP) {
-    		if (user.getText().equals(ps.recuperarPA(i).getUsuario()) && password.getText().equals(ps.recuperarPA(i).getPassword())) {
-    			
-    			
-    	    	try {
-    				
-    				
-    				BufferedWriter writer = new BufferedWriter(new FileWriter("Cache.txt"));
+            if (user.getText().equals(ps.recuperarPA(i).getUsuario()) && password.getText().equals(ps.recuperarPA(i).getPassword())) {
 
-    				writer.write(
+                try {
 
-    						ps.recuperarPA(i).getId()         +";"+
-    						ps.recuperarPA(i).getNombre()     +";"+
-    						ps.recuperarPA(i).getApellido()   +";"+
-    						ps.recuperarPA(i).getDNI()        +";"+
-    						ps.recuperarPA(i).getDomicilio()  +";"+
-    						ps.recuperarPA(i).getFechaAlta()  +";"+
-    						ps.recuperarPA(i).getUsuario()    +";"+
-    						ps.recuperarPA(i).getPassword()         
-    	        
-    						);
-    	        
-    	        writer.close();
-    	        }
-    			catch (IOException e){
-    				System.out.println("No existia el archivo, entonces lo creamos.");
-    	            
-    				System.out.println("An error occurred.");
-    			    e.printStackTrace();
-    	           }
-    			
-    			panelManager.armarPI();
-    			password.setText("");
-        		panelManager.mostrarPanelInicio();
-        		return;
-    			
-    		}
-    		i++;
-    	}
-    		
+                    BufferedWriter writer = new BufferedWriter(new FileWriter("Cache.txt"));
+
+                    writer.write(
+
+                            ps.recuperarPA(i).getId() + ";" +
+                                    ps.recuperarPA(i).getNombre() + ";" +
+                                    ps.recuperarPA(i).getApellido() + ";" +
+                                    ps.recuperarPA(i).getDNI() + ";" +
+                                    ps.recuperarPA(i).getDomicilio() + ";" +
+                                    ps.recuperarPA(i).getFechaAlta() + ";" +
+                                    ps.recuperarPA(i).getUsuario() + ";" +
+                                    ps.recuperarPA(i).getPassword()
+
+                    );
+
+                    writer.close();
+                } catch (IOException e) {
+                    System.out.println("No existia el archivo, entonces lo creamos.");
+
+                    System.out.println("An error occurred.");
+                    e.printStackTrace();
+                }
+
+                panelManager.armarPI();
+                password.setText("");
+                panelManager.mostrarPanelInicio();
+                return;
+
+            }
+            i++;
+        }
         		        
     	JOptionPane.showMessageDialog(this,"Usuario o contrasena incorrecta!","Error de ingreso",JOptionPane.ERROR_MESSAGE);
-    
-
     			//file.delete();
     }
     	

@@ -44,13 +44,7 @@ public class PanelManager {
         
         panelTurnos = new PanelTurnos();
         panelTurnos.armarPanelTurnos(this);
-        
-        panelModTurnos = new PanelModificarTurnos();
-        panelModTurnos.armarPanelModTurnos(this);
-        
-        panelCancelarTurno = new PanelCancelarTurno();
-        panelCancelarTurno.armarPanelCancelarTurnos(this);
-        
+
         panelRegisOdonto = new PanelRegistrarOdontologos();
         panelRegisOdonto.armarPanelRegisOdonto(this);
         
@@ -62,7 +56,8 @@ public class PanelManager {
         jf.setVisible(true);
         jf.pack();
         jf.setLocationRelativeTo(null);
-        
+
+
     }
 
     public void mostrarPanelLogIN() {
@@ -145,10 +140,17 @@ public class PanelManager {
     }
     
     public void armarPI() {
+
     	panelInicio = new PanelInicio();
         panelInicio.armarPanelInicio(this);
+
+        panelModTurnos = new PanelModificarTurnos();
+        panelModTurnos.armarPanelModTurnos(this);
+
+        panelCancelarTurno = new PanelCancelarTurno();
+        panelCancelarTurno.armarPanelCancelarTurnos(this);
     }
-    
+
 
 }
 

@@ -107,14 +107,9 @@ public class PanelTurnos extends JPanel{
 		horaJC.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent l) {
-				
-				if(modificacion == 0) {
-					reservar.setVisible(true);
-				}
-								
-				if(modificacion == 1) {
-					modificar.setVisible(true);
-				}
+
+				reservar.setVisible(true);
+
 			}
 		});
 		
@@ -131,10 +126,9 @@ public class PanelTurnos extends JPanel{
 					try{
 						BufferedReader leer = new BufferedReader(new FileReader("Cache.txt"));
 
-			        	String linea = leer.readLine();
 						//System.out.println(linea);
 						
-						String[] parts = linea.split(";");
+						String[] parts = leer.readLine().split(";");
 						TurnoService ts = new TurnoService();
 						String id1 = parts[0];
 						long Id = Long.parseLong(id1);

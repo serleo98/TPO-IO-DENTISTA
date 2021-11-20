@@ -1,4 +1,5 @@
 package Negocio;
+import java.time.LocalDateTime;
 import java.util.*;
 import java.io.Serializable;
 
@@ -6,6 +7,7 @@ import java.io.Serializable;
 public class Turno implements Serializable {
 
     private long id;
+    private long idClient;
     private String Dia;
     private String Hora;
     private Odontologo odontologo;
@@ -15,8 +17,8 @@ public class Turno implements Serializable {
 
 
     //contructur
-    public Turno(long id, String Dia, String Hora, Odontologo odontologo){
-        this.id = id;
+    public Turno(long idClient, String Dia, String Hora, Odontologo odontologo){
+        this.idClient = idClient;
         this.Dia = Dia;
         this.Hora = Hora;
         this.odontologo = odontologo;
@@ -54,6 +56,13 @@ public class Turno implements Serializable {
 		this.odontologo = odontologo;
 	}
 
+    public long getIdClient() {
+        return idClient;
+    }
+
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
+    }
 
     @Override
     public String toString() {

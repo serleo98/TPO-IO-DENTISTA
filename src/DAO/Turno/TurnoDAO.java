@@ -4,6 +4,7 @@ import Negocio.Turno;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class TurnoDAO implements ITurnoDAO {
 
@@ -20,25 +21,23 @@ public class TurnoDAO implements ITurnoDAO {
     @Override
     public Turno recuperarTU(long id) {
         ArrayList<Turno> turno = this.listarTU();
-        Turno resultado = null;
 
         for (Turno tu : turno) {
             if (tu.getId() == id)
-                resultado = tu;
+                return tu;
         }
-
-        return resultado;
+        return null;
     }
 
     @Override
     public void eliminarTU(long id) {
         ArchivoTurno archivo = new ArchivoTurno("turnos.txt");
-        ArrayList lista = archivo.listarArchivoTU();
+        ArrayList<Turno> lista = archivo.listarArchivoTU();
 
         int index = 0;
         int i = 0;
-        for (Object objeto : lista) {
-            if (((Turno) objeto).getId() == id)
+        for (Turno turno : lista) {
+            if ( turno.getId() == id)
                 index = i;
             i++;
         }
@@ -53,5 +52,15 @@ public class TurnoDAO implements ITurnoDAO {
         ArchivoTurno archivo = new ArchivoTurno("turnos.txt");
 
         return  archivo.listarArchivoTU();
+    }
+
+    @Override
+    public List<Turno> recuperarTUByClienteId(long id){
+
+        ArrayList<Turno> turno = this.listarTU();
+
+       return turno.stream()
+               .filter(t-> t.getIdClient() == id)
+               .collect(Collectors.toList());
     }
 }

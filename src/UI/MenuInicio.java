@@ -86,17 +86,12 @@ public class MenuInicio extends JMenuBar{
     	public void actionPerformed(ActionEvent e) {
     		try {
     			File myObj = new File("Cache.txt"); 
-    			myObj.delete();
-    		    /*if (myObj.delete()) { 
-    		      System.out.println("Deleted the file: " + myObj.getName());
-    		    } else {
-    		      System.out.println("Failed to delete the file.");
-    		    }*/
-    			
-    			//File cache = new File("");
-    			
-    			
-        		//cache.delete();
+    			if(myObj.delete()){
+					System.out.println("se borro piola");
+				}
+				else{
+					System.out.println("se rompio todito");
+				}
         		panelManager.mostrarPanelLogIN();
     		}
     		catch(Exception e2)
@@ -154,8 +149,7 @@ public class MenuInicio extends JMenuBar{
     						BufferedReader leer = new BufferedReader(new FileReader("Cache.txt"));
 
     			        	String linea = leer.readLine();
-    						
-    						
+
     						String[] parts = linea.split(";");
     						String id1 = parts[0];
     						long Id = Long.parseLong(id1);

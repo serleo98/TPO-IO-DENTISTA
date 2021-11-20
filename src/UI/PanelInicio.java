@@ -5,10 +5,7 @@ package UI;
 import java.awt.Dimension;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 
 public class PanelInicio extends JPanel{
@@ -94,6 +91,7 @@ public class PanelInicio extends JPanel{
 		turnos1 = new JComboBox();
 		size = turnos1.getPreferredSize();
 		turnos1.setBounds(250, 260, 300, size.height);
+
 		new AgregarItems(turnos1, 4);
 			setLayout(null);
 
@@ -144,7 +142,7 @@ public class PanelInicio extends JPanel{
 				
 
 			}catch(Exception e){
-
+				System.out.println(e);
 			}
 		}
 

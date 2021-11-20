@@ -33,8 +33,13 @@ public class PanelModificarTurnos extends JPanel {
 		seleccionar.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent k) {
-				
+
+				String turnoString = (String) turnos.getSelectedItem();
+				String[] strSplit = turnoString.split(" | ");
+				String id = strSplit[0];
+
 				panelManager.mostrarPanelTurnos();
+
 
 			}
 		});
