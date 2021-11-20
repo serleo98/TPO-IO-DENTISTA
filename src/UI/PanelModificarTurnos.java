@@ -9,14 +9,7 @@ public class PanelModificarTurnos extends JPanel {
 	private JLabel info;
 	private JComboBox turnos;
 	private JButton seleccionar;
-	private agregarItems ai;
-	private PanelManager panelManager;
-	private JPanel jp;
-	
 	public void armarPanelModTurnos(PanelManager panelManager) {
-		this.panelManager = panelManager;
-		
-		jp = this;
 		
 		info = new JLabel("Seleccione el turno a modificar");
 		Dimension size1 = info.getPreferredSize();
@@ -25,8 +18,7 @@ public class PanelModificarTurnos extends JPanel {
 		turnos = new JComboBox();
 		size1 = turnos.getPreferredSize();
         turnos.setBounds(50, 100, 100, size1.height);
-        ai = new agregarItems(turnos, 4);
-        
+		new AgregarItems(turnos, 4);
 		
 		seleccionar = new JButton("SELECCIONAR");
 		size1 = seleccionar.getPreferredSize();

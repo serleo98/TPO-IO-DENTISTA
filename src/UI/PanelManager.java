@@ -30,14 +30,9 @@ public class PanelManager {
     public void armarManager() {
         jf = new JFrame();
         jf.setPreferredSize(new Dimension(500, 300));
-       
-       
         
         panelLogIN = new PanelLogIN();
         panelLogIN.armarPanelLogIN(this);
-
-        
-       
         
         home = new BotonHome();
         menu = new MenuInicio();
@@ -68,12 +63,8 @@ public class PanelManager {
         jf.pack();
         jf.setLocationRelativeTo(null);
         
-       
-        
     }
-    
-    
-    
+
     public void mostrarPanelLogIN() {
     	jf.setSize(500, 300);
     	menu.setVisible(false);

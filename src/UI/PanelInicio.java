@@ -17,7 +17,7 @@ public class PanelInicio extends JPanel{
 	private PanelManager panelManager;
 	private JButton b_turnos;
 	private String id,nombre,apellido,dni,domicilio,fechaalta,usuario,password;
-	
+	private JComboBox turnos1;
 
 
 	public void armarPanelInicio(PanelManager panelManager) {
@@ -79,27 +79,22 @@ public class PanelInicio extends JPanel{
 
 			l_turnos.setBounds(350, 220, size.width, size.height);
 
-			// Acá creen un String que reciba los turnos que tiene asignados el paciente
+			// Acï¿½ creen un String que reciba los turnos que tiene asignados el paciente
 			// UNO POR UNO por c/vuelta, las vueltas del for, van a estar determinadas
-			// según la cantidad de turnos que tenga el paciente obvio, eso lo pueden sacar
-			// con la base de datos también.
+			// segï¿½n la cantidad de turnos que tenga el paciente obvio, eso lo pueden sacar
+			// con la base de datos tambiï¿½n.
 			// El string tiene que ir en el texto del JButton de abajo.
 
-			for (int i = 0; i <= 4; i++) {
-				b_turnos = new JButton("Dr #"+i);
+		// AcÃ¡ creen un String que reciba los turnos que tiene asignados el paciente
+		// UNO POR UNO por c/vuelta, las vueltas del for, van a estar determinadas
+		// segÃºn la cantidad de turnos que tenga el paciente obvio, eso lo pueden sacar
+		// con la base de datos tambiÃ©n.
+		// El string tiene que ir en el texto del JButton de abajo.
 
-				//JButton boton+i = new JButton("Boton"+i);
-
-				b_turnos.setBounds(245, 220+(i*40), 300, 40);
-				add(b_turnos);
-				b_turnos.addActionListener(new ActionListener() {
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						System.out.println(b_turnos.getText());
-					}
-				});
-
-			}
+		turnos1 = new JComboBox();
+		size = turnos1.getPreferredSize();
+		turnos1.setBounds(250, 260, 300, size.height);
+		new AgregarItems(turnos1, 4);
 			setLayout(null);
 
 			add(l_datos);
@@ -111,8 +106,7 @@ public class PanelInicio extends JPanel{
 			add(l_dni);
 			add(l_domicilio);
 			add(l_fechaalta);
-			
-
+			add(turnos1);
 			setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		}
 		

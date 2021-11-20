@@ -2,6 +2,7 @@ package UI;
 
 import javax.swing.*;
 
+import DAO.Odontologo.OdontologoService;
 import DAO.Turno.TurnoService;
 import Negocio.Odontologo;
 import Negocio.Turno;
@@ -10,7 +11,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 
 public class PanelTurnos extends JPanel{
@@ -20,7 +20,7 @@ public class PanelTurnos extends JPanel{
 	private JButton reservar, modificar;;
 	private JPanel jp;
 	private Dimension size1, size2;
-	private agregarItems ai;
+	private AgregarItems ai;
 	private PanelManager panelManager;
 	private int modificacion;
 	private int resultado3;
@@ -40,7 +40,7 @@ public class PanelTurnos extends JPanel{
         medicoJC = new JComboBox();
         size2 = medicoJC.getPreferredSize();
         medicoJC.setBounds(150, 50, 200, size2.height);
-        ai = new agregarItems(medicoJC, 1); 
+        ai = new AgregarItems(medicoJC, 1);
         
 		
         
@@ -50,7 +50,7 @@ public class PanelTurnos extends JPanel{
         fechaJC = new JComboBox();
         size2 = fechaJC.getPreferredSize();
         fechaJC.setBounds(150, 100, 200, size2.height);
-        ai = new agregarItems(fechaJC, 2);
+        ai = new AgregarItems(fechaJC, 2);
         fechaJC.setVisible(false);
         fechaL.setVisible(false);
         
@@ -60,7 +60,7 @@ public class PanelTurnos extends JPanel{
         horaJC = new JComboBox();
         size2 = horaJC.getPreferredSize();
         horaJC.setBounds(150, 150, 200, size2.height);
-        ai = new agregarItems(horaJC, 3);
+        ai = new AgregarItems(horaJC, 3);
         horaJC.setVisible(false);
         horaL.setVisible(false);
         
@@ -138,15 +138,20 @@ public class PanelTurnos extends JPanel{
 						TurnoService ts = new TurnoService();
 						String id1 = parts[0];
 						long Id = Long.parseLong(id1);
-						Odontologo odontologo = (Odontologo) medicoJC.getSelectedItem();
+						//Odontologo odontologo = (Odontologo) medicoJC.getSelectedItem();
+						String indetificador = (String) medicoJC.getSelectedItem();
+
+						String[] indetificadores= indetificador.split("-");
+						Odontologo odontologoSelected=new OdontologoService().recuperarODByMatricula(indetificadores[1]);
+
 						String fecha1 = fechaJC.getSelectedItem().toString();
 						String hora1 = horaJC.getSelectedItem().toString();
-						turno = new Turno(Id, fecha1 , hora1 , odontologo);
+						turno = new Turno(Id, fecha1 , hora1 , odontologoSelected);
 						ts.guardarTU(turno);
 						
 					}
 					catch(Exception e){
-
+						System.out.println(e.getMessage());
 					}
 					fechaL.setVisible(false);
 					fechaJC.setVisible(false);
@@ -175,14 +180,10 @@ public class PanelTurnos extends JPanel{
 					horaJC.setVisible(false);
 					modificar.setVisible(false);
 				}
-										
-										
-										
-										
+
 			}
 		});
-			
-		
+
 	}
 	
 	public void mod(int bandera) {

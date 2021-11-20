@@ -55,6 +55,13 @@ public class Turno implements Serializable {
 	}
 
 
-
-
+    @Override
+    public String toString() {
+        return "Turno{" +
+                "id=" + id +
+                ", Dia='" + Dia + '\'' +
+                ", Hora='" + Hora + '\'' +
+                ", odontologo=" + odontologo +
+                '}';
+    }
 }

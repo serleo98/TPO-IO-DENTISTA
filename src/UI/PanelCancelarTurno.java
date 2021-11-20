@@ -10,7 +10,7 @@ public class PanelCancelarTurno extends JPanel{
 	private JLabel info;
 	private JComboBox turnos;
 	private JButton seleccionar;
-	private agregarItems ai;
+	private AgregarItems ai;
 	private PanelManager panelManager;
 	private JPanel jp;
 	
@@ -26,7 +26,7 @@ public class PanelCancelarTurno extends JPanel{
 		turnos = new JComboBox();
 		size1 = turnos.getPreferredSize();
         turnos.setBounds(50, 100, 100, size1.height);
-        ai = new agregarItems(turnos, 4);
+        ai = new AgregarItems(turnos, 4);
         
 		
 		seleccionar = new JButton("CANCELAR");

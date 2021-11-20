@@ -84,5 +84,15 @@ public class OdontologoDAO implements IOdontologoDAO {
         return odontologo;
     }
 
+    @Override
+    public Odontologo recuperarODByMatricula(String matricula) {
+        ArrayList<Odontologo> odontologo = this.listarOD();
+
+        for (Odontologo od : odontologo) {
+            if (od.getMatricula().equals(matricula))
+                return  od;
+        }
+        return null;
+    }
 }
 

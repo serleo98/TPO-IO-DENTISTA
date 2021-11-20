@@ -21,6 +21,10 @@ public class OdontologoService {
         return OdontologoDAO.recuperarOD(id);
     }
 
+    public Odontologo recuperarODByMatricula(String matricula){
+        return OdontologoDAO.recuperarODByMatricula(matricula);
+    }
+
     public void eliminarOD(long id){
         OdontologoDAO.eliminarOD(id);
     }

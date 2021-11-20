@@ -8,41 +8,38 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.swing.JComboBox;
+
 import DAO.Odontologo.OdontologoService;
 import DAO.Turno.TurnoService;
 import Negocio.Odontologo;
 import Negocio.Turno;
 
-public class agregarItems {
-	public agregarItems(JComboBox jc, int d){
-		//aca tengo que trabajar la base de datos
-		
-		OdontologoService os = new OdontologoService();
-		
-		switch (d) {
-		
-		case 1:
-			
-			ArrayList <Odontologo> listaO = os.listarOD();
-			int aux = 1;
-			//String linea = leer.readLine();
-			for(Odontologo odontologo : listaO) {
-				
-				jc.addItem(os.recuperarOD(aux).getApellido());
-				aux++;
-			}
-			break;
-			
-		case 2:
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date fecha = new Date();
-			int a = fecha.getDay();
-			int d1 = fecha.getDate()-a+1;
-			int m = fecha.getMonth();
-			int y = fecha.getYear();
-			Date b = new Date(y, m, d1);
+public class AgregarItems {
+    public AgregarItems(JComboBox jc, int d) {
+        //aca tengo que trabajar la base de datos
+
+        OdontologoService os = new OdontologoService();
+
+        switch (d) {
+
+            case 1:
+
+                ArrayList<Odontologo> listaO = os.listarOD();
+                for (Odontologo odontologo : listaO) {
+                    jc.addItem(odontologo.getApellido() + "-" + odontologo.getMatricula());
+                }
+                break;
+
+            case 2:
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                sdf = new SimpleDateFormat("dd/MM/yyyy");
+                Date fecha = new Date();
+                int a = fecha.getDay();
+                int d1 = fecha.getDate() - a + 1;
+                int m = fecha.getMonth();
+                int y = fecha.getYear();
+                Date b = new Date(y, m, d1);
 
 			
 			for(int i = 0; i < 5; i++) {
@@ -69,8 +66,7 @@ public class agregarItems {
 				BufferedReader leer = new BufferedReader(new FileReader("Cache.txt"));
 
 	        	String linea = leer.readLine();
-				//System.out.println(linea);
-				
+
 				String[] parts = linea.split(";");
 				
 				String id1 = parts[0];
@@ -78,17 +74,15 @@ public class agregarItems {
 			}
 			catch(Exception e){
 
+                System.out.println(e);
 			}
-			//String linea = leer.readLine();
+
 			for(Turno turno : listaT) {
 				
 				jc.addItem(ts.recuperarTU(Id));
 				
 			}
-			//String test3[] = {"ej1", "ej2", "ej3"}; 
-			/*for(int i = 0; i < test3.length; i++) {
-				jc.addItem(test3[i]);
-			}*/
+
 			break;
 		}
 		
